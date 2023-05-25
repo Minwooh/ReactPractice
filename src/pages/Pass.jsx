@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Background = styled.div`
@@ -42,9 +43,26 @@ const Congla = styled.div`
 
   color: #000000;
 `;
-const Name = styled.div`
+const Name1 = styled.div`
   position: relative;
+  display: inline;
 
+  width: 203px;
+  height: 23px;
+
+  top: 25px;
+  left: 220px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #0075ff;
+`;
+const Name2 = styled.div`
+  position: relative;
+  display: inline;
   width: 203px;
   height: 23px;
   top: 25px;
@@ -55,7 +73,22 @@ const Name = styled.div`
   font-size: 24px;
   line-height: 29px;
 
-  color: #0075ff;
+  color: #000000;
+`;
+const Name3 = styled.div`
+  position: relative;
+  display: inline;
+  width: 203px;
+  height: 23px;
+  top: 25px;
+  left: 220px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+
+  color: #000000;
 `;
 const Content = styled.div`
   position: relative;
@@ -83,7 +116,10 @@ const Bongtu = styled.div`
   bottom: 80px;
 `;
 
-function Pass() {
+const Pass = () => {
+  const location = useLocation();
+  const name = location.state;
+
   return (
     <Background>
       <Whitebox>
@@ -99,7 +135,9 @@ function Pass() {
           <br />
           축하합니다!
         </Congla>
-        <Name>어쩌고 님은</Name>
+        <Name1>{name} </Name1>
+        <Name2>님</Name2>
+        <Name3>은</Name3>
         <Content>
           동덕여대 멋사 11기에 최종합격 하셨습니다! 🎉 <br />
           긴 선발 과정에 참여하시느라 고생 많으셨습니다.
@@ -124,6 +162,6 @@ function Pass() {
       </Whitebox>
     </Background>
   );
-}
+};
 
 export default Pass;

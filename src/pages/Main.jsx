@@ -43,6 +43,18 @@ const Title = styled.div`
   color: #5e162b;
 `;
 
+const Line1 = styled.div`
+  position: relative;
+  display: inline;
+  width: 11px;
+  height: 0px;
+
+  left: 143px;
+  top: 40px;
+  border: 5px solid #dc7190;
+  transform: rotate(90deg);
+`;
+
 const Name = styled.div`
   position: relative;
   display: inline;
@@ -70,12 +82,24 @@ const NameInput = styled.input`
   background: #cd99a6;
   border-radius: 50px;
 `;
+
+const Line2 = styled.div`
+  position: relative;
+  display: inline;
+  width: 14px;
+  height: 0px;
+
+  right: 11px;
+  top: 70px;
+  border: 5px solid #dc7190;
+  transform: rotate(90deg);
+`;
 const Phonenum = styled.div`
   position: relative;
   display: inline;
   width: 74px;
   height: 26px;
-  right: 10px;
+  right: 17px;
   top: 140px;
 
   font-family: "SUIT";
@@ -125,10 +149,47 @@ const Logo = styled.footer`
   color: #ffffff;
 `;
 
-function Main() {
+const Main = () => {
   const navigate = useNavigate();
-  const go = () => {
-    navigate("/Fail");
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+  const handlePhoneNum = (event) => {
+    setPhone(event.target.value);
+  };
+
+  const discriminate = () => {
+    let flag = false;
+    for (let i = 0; i < data.length; i++) {
+      if (
+        data[i].name === name &&
+        data[i].phone === phone &&
+        data[i].pass === 1
+      ) {
+        navigate("/Pass", { state: data[i].name });
+        flag = true;
+        break;
+      } else if (
+        data[i].name === name &&
+        data[i].phone === phone &&
+        data[i].pass === 0
+      ) {
+        navigate("/Fail");
+        flag = true;
+
+        break;
+      }
+    }
+
+    if (!flag) {
+      alert(
+        "등록되지 않은 성함/번호입니다. \n성함과 번호를 다시 한 번 확인해주세요!"
+      );
+    }
   };
   return (
     <Background>
@@ -145,19 +206,25 @@ function Main() {
           <br />
           11기 아기사자 합격자 발표
         </Title>
+        <Line1></Line1>
         <Name>
           성함
-          <NameInput></NameInput>
+          <NameInput type="text" value={name} onChange={handleName}></NameInput>
         </Name>
+        <Line2></Line2>
         <Phonenum>
           전화번호
-          <PhoneInput></PhoneInput>
+          <PhoneInput
+            type="text"
+            value={phone}
+            onChange={handlePhoneNum}
+          ></PhoneInput>
         </Phonenum>
 
-        <Button onClick={go}>입력</Button>
+        <Button onClick={discriminate}>입력</Button>
       </Whitebox>
       <Logo>DONGDUK x LIKELION</Logo>
     </Background>
   );
-}
+};
 export default Main;

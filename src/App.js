@@ -6,23 +6,24 @@ import Main from "./pages/Main";
 import Pass from "./pages/Pass";
 
 function App() {
-  return <Pass />;
-  <BrowserRouter>
-    <div
-      style={{
-        maxWidth: "1280px",
-        margin: "0px auto",
-        minHeight: "100vh",
-        position: "relative",
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/Fail" element={<Fail />} />
-        <Route path="/Pass" element={<Pass />} />
-      </Routes>
-    </div>
-  </BrowserRouter>;
+  return (
+    <BrowserRouter>
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0px auto",
+          minHeight: "100vh",
+          position: "relative",
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/Fail" element={<Fail />} />
+          <Route path="/Pass" element={<Pass />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

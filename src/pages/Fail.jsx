@@ -3,19 +3,21 @@ import styled from "styled-components";
 
 const Background = styled.div`
   height: 844px;
-  background: #f5f5f5;
+  background: #e0e0e0;
 `;
 
 const Whitebox = styled.div`
-   
-    margin: auto;
-    width: 80%;
-    height: 100vh;
-    top: 10%
+  position: relative;
+  margin: 0 auto;
 
-    background: #FFFFFF;
-    box-shadow: 0px 0px 4px 2px rgba(100, 100, 100, 0.25);
-    border-radius: 5px;
+  width: 572px;
+  height: 800px;
+  left: 31px;
+  top: 20px;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(100, 100, 100, 0.25);
+  border-radius: 5px;
 `;
 
 const Logimage = styled.div`
